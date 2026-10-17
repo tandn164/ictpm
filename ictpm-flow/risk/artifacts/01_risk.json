@@ -1,0 +1,612 @@
+{
+  "status": "approved",
+  "rules_version": "ictpm-flow/risk/rules @ 2026-10-17",
+  "inputs": {
+    "template": "ictpm-flow/risk/templates/risk-management.xlsx",
+    "inventory": {
+      "hsmt_json": {
+        "status": "found",
+        "path": "ictpm-flow/hsmt/artifacts/01_hsmt.json"
+      },
+      "rfp": {
+        "status": "found",
+        "path": "RFP.pdf"
+      },
+      "hsdt": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+      },
+      "wbs": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+      },
+      "master_schedule": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/04_Master_Schedule.docx"
+      },
+      "masterplan_json": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+      }
+    },
+    "preferred_facts": "ictpm-flow/masterplan/artifacts/01_masterplan.json (PMP đã approved) + HSMT"
+  },
+  "facts": [
+    {
+      "id": "F-R01",
+      "noi_dung": "Dự án ABC-WSS-PM_26I_09 — Hệ thống bán hàng online ABC Wear; ~25 cửa hàng; PM Nguyễn Đức Tân; 10 nhân sự chủ chốt (1 PM,1 SA,1 BA,1 UX,3 DEV,2 QC,1 OPS)",
+      "nguon": "HSDT.docx"
+    },
+    {
+      "id": "F-R02",
+      "noi_dung": "Giá dự thầu sau giảm giá 897.600.000 VNĐ (đã VAT 10%); chưa VAT ~816.000.000; cân đối dương chỉ +264.000 VNĐ; HĐ trọn gói, không phát sinh thanh toán ngoài hạng mục",
+      "nguon": "HSDT.docx"
+    },
+    {
+      "id": "F-R03",
+      "noi_dung": "Lịch HSDT: 06 giai đoạn 22/06/2026–22/12/2026, go-live (M5) 25/11/2026; WBS baseline go-live 01/10/2026, đóng 30/10/2026 — Manual chốt baseline theo WBS (Q-MP08)",
+      "nguon": "HSDT.docx + 02_WBS.xlsx + Decision Q-MP08"
+    },
+    {
+      "id": "F-R04",
+      "noi_dung": "WBS: phân tích 22/06–10/07; thiết kế 03/07–31/07; xây dựng 03/08–11/09; kiểm thử 11/08–25/09 (SIT 14–21/09, hiệu năng 14–22/09, ATTT 18–22/09, UAT 21–25/09); triển khai 18/09–28/10; go-live 01/10; hypercare đến 28/10; đào tạo 28–29/09",
+      "nguon": "02_WBS.xlsx"
+    },
+    {
+      "id": "F-R05",
+      "noi_dung": "NFR: P95 ≤ 2 giây; sẵn sàng 24/7/365 ≥ 99,5%; Multi-AZ, auto-scaling, PostgreSQL Master-Replica, Redis, CDN; Next.js SSR/SSG",
+      "nguon": "HSDT.docx"
+    },
+    {
+      "id": "F-R06",
+      "noi_dung": "Tích hợp qua Integration Middleware/Adapter trong VPN Site-to-Site/IPSec; tuyệt đối không nối trực tiếp Main DB; 05 luồng tích hợp với Main System + Logistics",
+      "nguon": "HSDT.docx"
+    },
+    {
+      "id": "F-R07",
+      "noi_dung": "Luồng đặt hàng–thanh toán–hoàn tiền–đối soát: thẻ/ví/QR/COD, VNPay/MoMo/VietQR, callback/IPN, giao dịch treo, hoàn tiền, đối soát hằng ngày; kiểm thử bảo mật OWASP; bảo vệ dữ liệu cá nhân theo NĐ 13/2023/NĐ-CP",
+      "nguon": "HSDT.docx"
+    },
+    {
+      "id": "F-R08",
+      "noi_dung": "Bảo hành toàn diện 12 tháng sau nghiệm thu; hỗ trợ 24/7; sở hữu mã nguồn/đặc tả/Selling DB/Menu Layer thuộc ABC Wear khi nghiệm thu",
+      "nguon": "HSDT.docx"
+    },
+    {
+      "id": "F-R09",
+      "noi_dung": "HSDT ghi BĐDT 8.976.000 VNĐ = 1% giá dự thầu, hiệu lực 180 ngày kể từ 15/06/2026 (chỗ khác ghi 'hiệu lực 6 tháng kể từ 01/06/2026'); trong khi HSMT 18.9 đang chọn 'Không áp dụng'",
+      "nguon": "HSDT.docx vs ictpm-flow/hsmt/artifacts/01_hsmt.json"
+    },
+    {
+      "id": "F-R10",
+      "noi_dung": "Mốc cut-over RFP là '20XX.July.1'; HSMT ghi cut-over 01/07/2027 (Decision Manual); WBS/Gantt ghi tuần cut-over 01/07 và go-live 01/10/2026 → lệch mốc giữa các nguồn",
+      "nguon": "RFP.pdf + 01_hsmt.json + 02_WBS.xlsx"
+    },
+    {
+      "id": "F-R11",
+      "noi_dung": "File WBS có ô lỗi công thức (#REF!/#ERROR!/#NAME?) và một mã WBS bị lệch dạng ngày (2026-05-02) — dữ liệu baseline cần làm sạch",
+      "nguon": "02_WBS.xlsx"
+    },
+    {
+      "id": "F-R12",
+      "noi_dung": "RFP: khi cần thuê ngoài (outsource) phải xin phép Party A bằng văn bản; HSMT 27.2 chốt thầu phụ tối đa 20%",
+      "nguon": "RFP.pdf + 01_hsmt.json"
+    }
+  ],
+  "questions_for_manual": [],
+  "decisions": {
+    "Q-R01": {
+      "quyet_dinh": "Ưu tiên WBS làm baseline lịch duy nhất (go-live 01/10/2026, đóng 30/10/2026).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R02": {
+      "quyet_dinh": "Bổ sung category Regulatory và Vendor.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R03": {
+      "quyet_dinh": "Budgeting dự phòng rủi ro = 44.880.000 VNĐ (5% × 897.600.000 VNĐ).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R04": {
+      "quyet_dinh": "Cadence: rà soát risk log hằng tuần + review mốc M0–M6; owner mặc định PM Nguyễn Đức Tân.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R05": {
+      "quyet_dinh": "Toàn bộ rủi ro Priority A dùng strategy Mitigate.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R06": {
+      "quyet_dinh": "Có phân tích định lượng EMV cho rủi ro A; số liệu đề xuất chờ chốt tại Q-R09.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R08": {
+      "quyet_dinh": "Lệch HSMT vs HSDT về BĐDT: ưu tiên HSDT → BĐDT Áp dụng 1% = 8.976.000 VNĐ; cập nhật HSMT 18.9/18.2.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R07": {
+      "quyet_dinh": "Manual duyệt toàn bộ 16 rủi ro trong risks[] (giữ nguyên, không sửa/xoá).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-R09": {
+      "quyet_dinh": "Tăng dự phòng rủi ro lên 10% ngân sách = 89.760.000 VNĐ (thay mức 5% tại Q-R03).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    }
+  },
+  "plan": {
+    "methodology": {
+      "value": "Nhận diện theo Category–Driver–Risk bám Fact; phân tích định tính Probability × Impact → Priority A/B/C; phân tích định lượng EMV cho rủi ro Priority A (Decision Q-R06); ứng phó Avoid/Transfer/Mitigate/Accept; theo dõi hằng tuần và tại mốc M0–M6.",
+      "confidence": "de_xuat",
+      "evidence": "rules/methodology + masterplan communications (họp tiến độ tuần)"
+    },
+    "roles": {
+      "value": "PM Nguyễn Đức Tân chủ trì register và là owner mặc định (Q-R04); SA (Nguyễn Hải Đăng) rủi ro kỹ thuật/kiến trúc; BA (Đinh Đức Thắng) rủi ro yêu cầu/UAT; OPS (Trần Hùng E) rủi ro triển khai/hạ tầng; QC (Nguyễn Hữu C) rủi ro chất lượng; Sponsor ABC Wear phê duyệt strategy mức A.",
+      "confidence": "de_xuat",
+      "evidence": "01_masterplan.json roles"
+    },
+    "budgeting": {
+      "value": "89.760.000 VNĐ (10% × ngân sách 897.600.000 VNĐ) — Decision Q-R09 (thay mức 5% tại Q-R03)",
+      "confidence": "decision",
+      "evidence": "Q-R09 + Q-MP04"
+    },
+    "timing": {
+      "value": "Rà soát hằng tuần (WBS 1.3.1) + review tại mốc M0 (03/07), M1–M3, trước UAT 21/09/2026, trước go-live 01/10/2026, đóng dự án 30/10/2026.",
+      "confidence": "decision",
+      "evidence": "Q-R04 + 02_WBS.xlsx"
+    },
+    "risk_categories": {
+      "value": [
+        "System",
+        "Technical",
+        "Organization",
+        "Regulatory",
+        "Vendor"
+      ],
+      "confidence": "decision",
+      "evidence": "Q-R02"
+    },
+    "inputs_used": [
+      "RFP.pdf",
+      "ictpm-flow/hsmt/artifacts/01_hsmt.json",
+      "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx",
+      "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx",
+      "ictpm-flow/masterplan/artifacts/inputs/04_Master_Schedule.docx",
+      "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    ]
+  },
+  "risks": [
+    {
+      "id": "R-001",
+      "category": "System",
+      "driver": "Yêu cầu nghiệp vụ chưa chốt đủ trước khi thiết kế (SRS duyệt muộn 10/07/2026, thiết kế bắt đầu 03/07/2026)",
+      "risk": "Rework và trễ tiến độ phân tích/thiết kế",
+      "probability": "Middle",
+      "impact": "Big",
+      "strategy": "Mitigate",
+      "response_actions": "Chốt SRS có chữ ký 10/07/2026 (WBS 2.5); freeze change sau mốc; change qua Change Management Plan",
+      "owner": "BA – Đinh Đức Thắng",
+      "contingency": "Buffer 2 tuần trước cut-over",
+      "residual": "Change nhỏ vẫn có thể phát sinh",
+      "secondary": "",
+      "evidence": "02_WBS.xlsx (2.1–2.5) + 01_masterplan.json risks_top R-001",
+      "confidence": "trung_binh",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "A"
+    },
+    {
+      "id": "R-002",
+      "category": "Technical",
+      "driver": "Tích hợp Main System/Logistics qua Integration Middleware + VPN IPSec, 05 luồng đồng bộ; không được nối trực tiếp Main DB",
+      "risk": "Trễ kiểm thử tích hợp (SIT) và go-live",
+      "probability": "High",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "Prototype middleware sớm trong giai đoạn xây dựng (WBS 4.5: 21/08–09/09); staging đủ dữ liệu; contract test 05 luồng",
+      "owner": "SA – Nguyễn Hải Đăng",
+      "contingency": "Feature flag/rollback; go-live từng phần",
+      "residual": "Một số API Main System chậm vẫn ảnh hưởng NFR P95",
+      "secondary": "Phụ thuộc team Main System ABC Wear",
+      "evidence": "HSDT (Integration Middleware/VPN) + 02_WBS.xlsx 4.5,5.2",
+      "confidence": "cao",
+      "probability_current": "Middle",
+      "impact_current": "Small",
+      "priority_current": "C",
+      "priority": "A"
+    },
+    {
+      "id": "R-003",
+      "category": "Organization",
+      "driver": "End-user/nghiệp vụ ABC Wear tham gia hạn chế; UAT chỉ 21–25/09/2026 sát go-live",
+      "risk": "Thiếu nhu cầu thực tế, UAT fail, trễ go-live",
+      "probability": "Middle",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "Lịch workshop bắt buộc; đại diện nghiệp vụ/ key users trong UAT; test case ký trước",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Gia hạn UAT 1 tuần (ảnh hưởng go-live → Sponsor)",
+      "residual": "",
+      "secondary": "",
+      "evidence": "02_WBS.xlsx 5.6 + 01_masterplan.json assumptions",
+      "confidence": "trung_binh",
+      "probability_current": "Low",
+      "impact_current": "Small",
+      "priority_current": "C",
+      "priority": "B"
+    },
+    {
+      "id": "R-004",
+      "category": "Technical",
+      "driver": "Giải pháp/kiến trúc phải tự phát triển (Next.js SSR/SSG, Multi-AZ, PostgreSQL Master-Replica, Redis, CDN) khó đáp ứng yêu cầu đặc thù nếu dùng lại thành phần có sẵn",
+      "risk": "Không đáp ứng đủ yêu cầu nghiệp vụ đặc thù",
+      "probability": "Middle",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "Spike kỹ thuật đầu giai đoạn thiết kế (WBS 3.x); phương án fallback tự phát triển module",
+      "owner": "SA – Nguyễn Hải Đăng",
+      "contingency": "",
+      "residual": "",
+      "secondary": "",
+      "contract_link": "",
+      "evidence": "HSDT kiến trúc + 01_masterplan.json risks_top R-004",
+      "confidence": "thap",
+      "comments": "Giữ id/nội dung theo PMP đã approved; chờ Manual xác nhận",
+      "probability_current": "Low",
+      "impact_current": "Small",
+      "priority_current": "C",
+      "priority": "B"
+    },
+    {
+      "id": "R-005",
+      "category": "Organization",
+      "driver": "Khối lượng 3.684 giờ trong ~6 tháng với 10 nhân sự chủ chốt; tải bắt buộc tăng cường 03 DEV và 02 QC",
+      "risk": "Tiến độ dự án bị chậm do thiếu/thay đổi nhân sự chủ chốt",
+      "probability": "Middle",
+      "impact": "Big",
+      "strategy": "Mitigate",
+      "response_actions": "Tuyển/borrow nhân sự dự phòng; ưu tiên critical path; cross-training",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "",
+      "residual": "",
+      "secondary": "",
+      "contract_link": "",
+      "evidence": "HSDT (3.684 giờ, 10 nhân sự) + 01_masterplan.json roles",
+      "confidence": "trung_binh",
+      "comments": "",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "A"
+    },
+    {
+      "id": "R-006",
+      "category": "System",
+      "driver": "Lệch baseline lịch giữa các nguồn: HSDT 25/11/2026, WBS 01/10/2026, RFP/HSMT 01/07 (2027), Master Schedule 28/10/2026",
+      "risk": "Tranh chấp mốc go-live/nghiệm thu, trễ bàn giao hoặc bị phạt",
+      "probability": "Middle",
+      "impact": "Big",
+      "strategy": "Mitigate",
+      "response_actions": "Chốt 01 baseline duy nhất = WBS (Decision Q-R01); cập nhật HSDT/Master Schedule cho khớp; ghi rõ trong biên bản với ABC Wear; mọi đổi mốc phải qua Change Request",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Nếu bị ép mốc 01/07 → apply Change Request + cost/schedule impact",
+      "residual": "Vẫn có rủi ro tranh cãi hợp đồng",
+      "secondary": "Phát sinh issue thay đổi phạm vi",
+      "evidence": "F-R03, F-R10, F-R09; Decision Q-MP08",
+      "confidence": "cao",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "A"
+    },
+    {
+      "id": "R-007",
+      "category": "Technical",
+      "driver": "Cửa sổ kiểm thử bị nén: xây dựng kết thúc 11/09, SIT 14–21/09, hiệu năng 14–22/09, ATTT 18–22/09, UAT 21–25/09, go-live 01/10 — không có buffer",
+      "risk": "Lỗi nghiêm trọng phát hiện muộn, trượt go-live 01/10/2026",
+      "probability": "High",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "Dịch chuyển kiểm thử sớm (shift-left) song song xây dựng; tự động hóa regression; freeze code trước SIT; ưu tiên luồng đặt hàng–thanh toán",
+      "owner": "QC1 – Nguyễn Hữu C",
+      "contingency": "Cut-over một phần + hotfix sau go-live",
+      "residual": "Một số lỗi nhỏ tồn đọng vào hypercare",
+      "secondary": "Tăng chi phí sửa lỗi ngoài kế hoạch",
+      "evidence": "02_WBS.xlsx (4,5,6) — nén lịch; F-R04",
+      "confidence": "cao",
+      "probability_current": "Middle",
+      "impact_current": "Small",
+      "priority_current": "C",
+      "priority": "A"
+    },
+    {
+      "id": "R-008",
+      "category": "Organization",
+      "driver": "Hợp đồng trọn gói, giá cố định 897.600.000 VNĐ (đã VAT); cân đối dương chỉ +264.000 VNĐ; không phát sinh thanh toán ngoài hạng mục đã chào",
+      "risk": "Phát sinh khối lượng/chi phí (OT, sửa lỗi, hạ tầng) làm dự án lỗ",
+      "probability": "Middle",
+      "impact": "Big",
+      "strategy": "Mitigate",
+      "response_actions": "Kiểm soát change chặt theo Change Management Plan; log giờ theo WBS 3.684 giờ; cảnh báo sớm lệch estimate; đàm phán phụ lục khi vượt phạm vi",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Contingency budgeting (chờ Q-R03) + phụ lục hợp đồng",
+      "residual": "Chi phí cơ hội/ lợi nhuận mỏng",
+      "secondary": "",
+      "evidence": "F-R02, F-R08",
+      "confidence": "cao",
+      "probability_current": "Middle",
+      "impact_current": "Middle",
+      "priority_current": "B",
+      "priority": "A"
+    },
+    {
+      "id": "R-009",
+      "category": "Technical",
+      "driver": "Luồng thanh toán phức tạp: thẻ/ví/QR/COD, VNPay/MoMo/VietQR, callback/IPN, giao dịch treo, hoàn tiền, đối soát hằng ngày",
+      "risk": "Sai/treo giao dịch, hoàn tiền chậm, lệch đối soát → khiếu nại khách hàng, mất doanh thu",
+      "probability": "Middle",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "Idempotency + retry cho IPN; đối soát tự động hằng ngày; test case giao dịch treo/hoàn tiền; giám sát alert",
+      "owner": "DEV3 – Nguyễn Ngọc B",
+      "contingency": "Đối soát thủ công tạm thời + đối chiếu với cổng thanh toán",
+      "residual": "Một số giao dịch hiếm vẫn cần xử lý tay",
+      "secondary": "",
+      "evidence": "F-R07; HSDT luồng thanh toán",
+      "confidence": "cao",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "B"
+    },
+    {
+      "id": "R-010",
+      "category": "Regulatory",
+      "driver": "Xử lý dữ liệu cá nhân khách hàng (đăng ký, OTP, sổ địa chỉ, lịch sử mua) theo NĐ 13/2023/NĐ-CP và yêu cầu ATTT (OWASP)",
+      "risk": "Chế tài/vi phạm bảo vệ dữ liệu cá nhân; sự cố rò rỉ dữ liệu",
+      "probability": "Low",
+      "impact": "Big",
+      "strategy": "Mitigate",
+      "response_actions": "Thiết kế bảo mật (WBS 3.1.3); mã hóa dữ liệu nhạy cảm; phân quyền; quét OWASP ZAP trước go-live; ghi nhận consent",
+      "owner": "SA – Nguyễn Hải Đăng",
+      "contingency": "Kế hoạch ứng cứu sự cố + thông báo cơ quan theo quy định",
+      "residual": "Rủi ro pháp lý nền luôn tồn tại",
+      "secondary": "",
+      "evidence": "F-R07; HSDT NĐ 13/2023 + WBS 3.1.3",
+      "confidence": "trung_binh",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "B"
+    },
+    {
+      "id": "R-011",
+      "category": "System",
+      "driver": "Phụ thuộc sẵn sàng hạ tầng/API Main System, môi trường VPN IPSec và dữ liệu do ABC Wear cung cấp — FYI: hàng chờ môi trường, thủ tục mạng nội bộ",
+      "risk": "Chậm bàn giao môi trường/truy cập → trễ tích hợp và kiểm thử",
+      "probability": "Middle",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "Kế hoạch yêu cầu môi trường/truy cập theo mốc WBS ngay từ kickoff; đầu mối kỹ thuật ABC Wear; checklist hạ tầng ký trước 21/08",
+      "owner": "OPS – Trần Hùng E",
+      "contingency": "Môi trường mock/sandbox để phát triển song song",
+      "residual": "Vẫn phụ thuộc bên thứ ba",
+      "secondary": "Lệch cấu hình giữa mock và thật",
+      "evidence": "F-R06; 01_masterplan.json assumptions",
+      "confidence": "trung_binh",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "B"
+    },
+    {
+      "id": "R-012",
+      "category": "Organization",
+      "driver": "Cam kết bảo hành toàn diện 12 tháng + hỗ trợ 24/7 sau nghiệm thu, ngoài khoảng thời gian báo giá dự án (22/06–30/10/2026)",
+      "risk": "Chi phí hỗ trợ/bảo hành phát sinh sau nghiệm thu làm giảm lợi nhuận",
+      "probability": "Middle",
+      "impact": "Small",
+      "strategy": "Accept",
+      "response_actions": "Theo dõi ticket trong 12 tháng; phân loại lỗi thật (do nhà thầu) vs yêu cầu mới; ghi nhận để cải tiến ước lượng",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Phụ lục hỗ trợ mở rộng nếu ABC Wear yêu cầu ngoài cam kết",
+      "residual": "Một số lỗi logic phải sửa miễn phí theo hợp đồng",
+      "secondary": "",
+      "evidence": "F-R08; HSDT mục 3.3",
+      "confidence": "trung_binh",
+      "probability_current": "",
+      "impact_current": "",
+      "priority_current": "",
+      "priority": "C"
+    },
+    {
+      "id": "R-013",
+      "category": "System",
+      "driver": "Chất lượng dữ liệu baseline: file WBS có ô lỗi công thức (#REF!/#ERROR!/#NAME?) và mã WBS sai dạng ngày",
+      "risk": "Báo cáo tiến độ/baseline sai, đánh giá lệch tiến độ",
+      "probability": "Middle",
+      "impact": "Small",
+      "strategy": "Mitigate",
+      "response_actions": "Làm sạch WBS trước khi chốt baseline; kiểm tra chéo WBS–Master Schedule; PM review dữ liệu hằng tuần",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Báo cáo tiến độ bằng nguồn chuẩn hoá (Master Plan)",
+      "residual": "Sai số nhỏ trong báo cáo",
+      "secondary": "",
+      "evidence": "F-R11; 02_WBS.xlsx",
+      "confidence": "cao",
+      "probability_current": "Low",
+      "impact_current": "Small",
+      "priority_current": "C",
+      "priority": "C"
+    },
+    {
+      "id": "R-014",
+      "category": "Vendor",
+      "driver": "Thuê ngoài/thầu phụ phải được ABC Wear cho phép bằng văn bản; hạn mức thầu phụ 20% giá gói thầu",
+      "risk": "Chậm nguồn lực hoặc không được chấp thuận → trễ tiến độ",
+      "probability": "Low",
+      "impact": "Middle",
+      "strategy": "Accept",
+      "response_actions": "Chủ động triển khai trong nội bộ 10 nhân sự; nếu cần thầu phụ thì xin phép sớm và ≤20%",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Kế hoạch nhân sự dự phòng nội bộ",
+      "residual": "Phụ thuộc phê duyệt của Chủ đầu tư",
+      "secondary": "",
+      "evidence": "F-R12; RFP + HSMT 27.2",
+      "confidence": "trung_binh",
+      "probability_current": "",
+      "impact_current": "",
+      "priority_current": "",
+      "priority": "C"
+    },
+    {
+      "id": "R-015",
+      "category": "Regulatory",
+      "driver": "Không nhất quán bảo đảm dự thầu: HSMT 18.9 ghi 'Không áp dụng' trong khi HSDT có BĐDT 1% (8.976.000 VNĐ); nội bộ HSDT mâu thuẫn hiệu lực (180 ngày từ 15/06/2026 vs 6 tháng từ 01/06/2026)",
+      "risk": "Hồ sơ không nhất quán → rủi ro pháp lý/đấu thầu và tranh chấp khi ký hợp đồng",
+      "probability": "Middle",
+      "impact": "Big",
+      "strategy": "Mitigate",
+      "response_actions": "Theo Decision Q-R08 (ưu tiên HSDT): cập nhật HSMT 18.9/18.2 sang Áp dụng, giá trị 8.976.000 VNĐ; sửa hiệu lực BĐDT cho nhất quán; lấy xác nhận văn bản của ABC Wear",
+      "owner": "PM – Nguyễn Đức Tân",
+      "contingency": "Gia hạn/điều chỉnh thư bảo lãnh BIDV Hà Thành khi được yêu cầu",
+      "residual": "Chi phí/gia hạn BĐDT có thể phát sinh",
+      "secondary": "",
+      "evidence": "F-R09; HSDT BĐDT + 01_hsmt.json 18.9",
+      "confidence": "cao",
+      "probability_current": "Low",
+      "impact_current": "Middle",
+      "priority_current": "C",
+      "priority": "A"
+    },
+    {
+      "id": "R-016",
+      "category": "Vendor",
+      "driver": "Phụ thuộc bên thứ ba: cổng thanh toán (VNPay/MoMo/VietQR) và hạ tầng cloud/CDN; phí thiết lập/duy trì và SLA ngoài tầm kiểm soát",
+      "risk": "Cổng thanh toán/hạ tầng gián đoạn hoặc đổi chính sách → ngừng giao dịch, ảnh hưởng NFR và chi phí",
+      "probability": "Middle",
+      "impact": "Middle",
+      "strategy": "Mitigate",
+      "response_actions": "SLA rõ với nhà cung cấp; retry + fallback đa cổng; giám sát uptime và alert; dự phòng chi phí phí cổng",
+      "owner": "OPS – Trần Hùng E",
+      "contingency": "Tạm chuyển COD hoặc cổng dự phòng khi sự cố",
+      "residual": "Gián đoạn ngắn vẫn ảnh hưởng trải nghiệm khách",
+      "secondary": "",
+      "contract_link": "Phí thiết lập cổng thanh toán (HSDT)",
+      "evidence": "F-R07; HSDT luồng thanh toán + kinh nghiệm VNPay Partner",
+      "confidence": "trung_binh",
+      "comments": "",
+      "probability_current": "",
+      "impact_current": "",
+      "priority_current": "",
+      "priority": "B"
+    }
+  ],
+  "monitor": {
+    "cadence": "Hằng tuần trong họp tiến độ (WBS 1.3.1) + review chính thức tại mốc M0–M6 — Decision Q-R04",
+    "review_questions": [
+      "Response plan còn hiệu lực?",
+      "Có rủi ro mới không?",
+      "Rủi ro đã đổi Probability / Impact / Priority không?",
+      "Contingency đã sẵn sàng khi trigger?"
+    ]
+  },
+  "project": {
+    "name": "Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09)",
+    "code": "ABC-WSS-PM_26I_09",
+    "company": "Công ty Cổ phần ABC Wear / Nhóm 09-20261 (nhà thầu)",
+    "pm": "Nguyễn Đức Tân",
+    "date": "2026-10-17",
+    "version": "1.0"
+  },
+  "validation": {
+    "vong": 3,
+    "vong_toi_da": 3,
+    "ket_luan": "Đã áp Q-R01..Q-R09; danh sách 16 rủi ro đã được Manual duyệt. Chờ Manual ghi 'approved' để fill Excel.",
+    "A": [],
+    "B": [],
+    "C": []
+  },
+  "audit": {
+    "add_risk_log": [
+      {
+        "at": "2026-10-16T18:02:14.861851+00:00",
+        "added_ids": [
+          "R-004"
+        ],
+        "count": 1
+      },
+      {
+        "at": "2026-10-16T18:02:29.605980+00:00",
+        "added_ids": [
+          "R-005"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "quantitative": {
+    "enabled": true,
+    "method": "EMV = P(%) × Impact(VNĐ) cho rủi ro Priority A; cơ sở chi phí: 815.760.000 VNĐ / 6 tháng ≈ 136.000.000 VNĐ/tháng cho đội 10 người (HSDT)",
+    "items": [
+      {
+        "id": "R-001",
+        "probability_pct": 25,
+        "impact_vnd": 50000000,
+        "emv_vnd": 12500000
+      },
+      {
+        "id": "R-002",
+        "probability_pct": 45,
+        "impact_vnd": 70000000,
+        "emv_vnd": 31500000
+      },
+      {
+        "id": "R-005",
+        "probability_pct": 25,
+        "impact_vnd": 60000000,
+        "emv_vnd": 15000000
+      },
+      {
+        "id": "R-006",
+        "probability_pct": 25,
+        "impact_vnd": 80000000,
+        "emv_vnd": 20000000
+      },
+      {
+        "id": "R-007",
+        "probability_pct": 45,
+        "impact_vnd": 70000000,
+        "emv_vnd": 31500000
+      },
+      {
+        "id": "R-008",
+        "probability_pct": 25,
+        "impact_vnd": 90000000,
+        "emv_vnd": 22500000
+      },
+      {
+        "id": "R-015",
+        "probability_pct": 20,
+        "impact_vnd": 40000000,
+        "emv_vnd": 8000000
+      }
+    ],
+    "total_emv_vnd": 141000000,
+    "budget_baseline_vnd": 897600000,
+    "contingency_vnd": 89760000,
+    "gap_vnd": 51240000,
+    "note": "P%/Impact là ĐỀ XUẤT của AI (confidence de_xuat), chưa có Decision — chờ chốt tại Q-R09. Tổng EMV có thể trùng lặp do R-001/R-006/R-007 liên quan lịch.",
+    "confidence": "de_xuat",
+    "evidence": "Q-R06 + HSDT (khối lượng/giờ công)",
+    "contingency_pct": 10
+  }
+}

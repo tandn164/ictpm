@@ -1,0 +1,754 @@
+{
+  "status": "approved",
+  "rules_version": "ictpm-flow/supporting/rules @ 2026-10-17",
+  "inputs": {
+    "docs_requested": [
+      "all"
+    ],
+    "inventory": {
+      "masterplan_json": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+      },
+      "risk_json": {
+        "status": "found",
+        "path": "ictpm-flow/risk/artifacts/01_risk.json"
+      },
+      "closeout_json": {
+        "status": "found",
+        "path": "ictpm-flow/closeout/artifacts/01_closeout.json"
+      },
+      "hsdt": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+      },
+      "wbs": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+      },
+      "master_schedule": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/04_Master_Schedule.docx"
+      },
+      "hsmt_json": {
+        "status": "found",
+        "path": "ictpm-flow/hsmt/artifacts/01_hsmt.json"
+      },
+      "rfp": {
+        "status": "found",
+        "path": "RFP.pdf"
+      },
+      "other": {
+        "status": "missing",
+        "path": null
+      }
+    }
+  },
+  "facts": [
+    {
+      "id": "F-SUP01",
+      "noi_dung": "Dự án Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09) (ABC-WSS-PM_26I_09); PM Nguyễn Đức Tân",
+      "nguon": "masterplan_json"
+    },
+    {
+      "id": "F-SUP02",
+      "noi_dung": "11 roles trong Master Plan",
+      "nguon": "masterplan_json#roles"
+    },
+    {
+      "id": "F-SUP03",
+      "noi_dung": "7 rủi ro Priority A",
+      "nguon": "risk_json"
+    },
+    {
+      "id": "F-SUP04",
+      "noi_dung": "Closeout approved — go-live 01/10/2026; đóng 30/10/2026; bảo hành 12 tháng",
+      "nguon": "closeout_json"
+    },
+    {
+      "id": "F-SUP05",
+      "noi_dung": "Ngân sách 897.600.000 VNĐ (đã VAT)",
+      "nguon": "masterplan/closeout"
+    }
+  ],
+  "questions_for_manual": [],
+  "decisions": {
+    "Q-SUP-PEER": {
+      "quyet_dinh": "Điền điểm peer 1–5 (agent đề xuất theo vai trò/Fact; Manual duyệt).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-SUP-SURVEY": {
+      "quyet_dinh": "Điền respondent + Likert 1–5 (agent đề xuất từ closeout effectiveness; Manual duyệt).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-SUP-GATE": {
+      "quyet_dinh": "Conditional Go — đóng giai dự án với điều kiện theo dõi bảo hành 12 tháng còn Open.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-SUP-SEL": {
+      "quyet_dinh": "Tính totals selection (weighted) cho phương án A = dự án hiện tại.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-SUP-POST-RATING": {
+      "quyet_dinh": "Điền rating post-eval 1–5 (agent đề xuất từ closeout baselines; Manual duyệt).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-SUP-06": {
+      "quyet_dinh": "approved — fill toàn bộ draft supporting.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    }
+  },
+  "project": {
+    "name": {
+      "value": "Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09)",
+      "confidence": "fact",
+      "evidence": "masterplan_json"
+    },
+    "code": {
+      "value": "ABC-WSS-PM_26I_09",
+      "confidence": "fact",
+      "evidence": "masterplan_json"
+    },
+    "company": {
+      "value": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+      "confidence": "fact",
+      "evidence": "masterplan_json"
+    },
+    "pm": {
+      "value": "Nguyễn Đức Tân",
+      "confidence": "fact",
+      "evidence": "masterplan_json"
+    },
+    "sponsor": {
+      "value": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+      "confidence": "fact",
+      "evidence": "closeout_json / HSDT"
+    },
+    "date": {
+      "value": "2026-10-17",
+      "confidence": "decision",
+      "evidence": "Q-SUP-06"
+    },
+    "version": {
+      "value": "1.0",
+      "confidence": "decision",
+      "evidence": "Q-SUP-06"
+    }
+  },
+  "documents": {
+    "stakeholder_analysis": {
+      "enabled": true,
+      "stakeholders": [
+        {
+          "name": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+          "role": "Project Sponsor / Chủ đầu tư",
+          "power": "High",
+          "interest": "High",
+          "strategy": "Manage Closely",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "Định hướng, cấp nguồn lực, phê duyệt UAT/go-live và thay đổi lớn.",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Nguyễn Đức Tân",
+          "role": "PM – Quản lý dự án",
+          "power": "High",
+          "interest": "High",
+          "strategy": "Manage Closely",
+          "owner": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+          "engagement": "PM – Quản lý dự án",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Nguyễn Hải Đăng",
+          "role": "SA – Kiến trúc hệ thống",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "SA – Kiến trúc hệ thống",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Đinh Đức Thắng",
+          "role": "BA – Phân tích nghiệp vụ",
+          "power": "Middle",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "BA – Phân tích nghiệp vụ",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Nguyễn Thị Thu Thủy",
+          "role": "UX – Thiết kế giao diện",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "UX – Thiết kế giao diện",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Nguyễn Thị Phương",
+          "role": "DEV1 – Lập trình viên chính (Module Khách hàng & Tích hợp)",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "DEV1 – Lập trình viên chính (Module Khách hàng & Tích hợp)",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Vũ Tuấn A",
+          "role": "DEV2 – Lập trình viên (Module Sản phẩm, Tìm kiếm & Tồn kho)",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "DEV2 – Lập trình viên (Module Sản phẩm, Tìm kiếm & Tồn kho)",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Nguyễn Ngọc B",
+          "role": "DEV3 – Lập trình viên (Module Đơn hàng, Thanh toán & Logistics)",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "DEV3 – Lập trình viên (Module Đơn hàng, Thanh toán & Logistics)",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Nguyễn Hữu C",
+          "role": "QC1 – Kiểm thử trưởng (SIT, Tự động hóa & Hiệu năng)",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "QC1 – Kiểm thử trưởng (SIT, Tự động hóa & Hiệu năng)",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Phạm Minh D",
+          "role": "QC2 – Chuyên viên Kiểm thử (Kiểm thử chức năng, Bảo mật & UAT)",
+          "power": "Middle",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "QC2 – Chuyên viên Kiểm thử (Kiểm thử chức năng, Bảo mật & UAT)",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Trần Hùng E",
+          "role": "OPS – Kỹ sư Hạ tầng, DevOps và Vận hành",
+          "power": "Low",
+          "interest": "High",
+          "strategy": "Keep Informed",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "OPS – Kỹ sư Hạ tầng, DevOps và Vận hành",
+          "notes": "Derived từ masterplan.roles[]",
+          "confidence": "de_xuat",
+          "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json#roles"
+        },
+        {
+          "name": "Key users / Nghiệp vụ ABC Wear",
+          "role": "Nghiệp vụ / key users",
+          "power": "Middle",
+          "interest": "High",
+          "strategy": "Keep Satisfied",
+          "owner": "Nguyễn Đức Tân",
+          "engagement": "Workshop, UAT, đào tạo",
+          "notes": "Xác nhận yêu cầu và chấp nhận",
+          "confidence": "de_xuat",
+          "evidence": "masterplan.communications"
+        }
+      ]
+    },
+    "issues_actions": {
+      "enabled": true,
+      "items": [
+        {
+          "id": "IA-001",
+          "type": "Issue",
+          "description": "Theo dõi bảo hành 12 tháng (lỗi/lỗ hổng sau nghiệm thu)",
+          "priority": "High",
+          "status": "Open",
+          "owner": "Nhà thầu Nhóm 09-20261 / PM",
+          "due": "2027-10-01",
+          "action": "Theo dõi theo Decision closeout",
+          "related_risk": "",
+          "confidence": "fact",
+          "evidence": "closeout.admin_closure.open_items"
+        },
+        {
+          "id": "IA-002",
+          "type": "Action",
+          "description": "Bàn giao đầy đủ quyền/admin OPS dài hạn",
+          "priority": "Middle",
+          "status": "Closed",
+          "owner": "OPS ABC Wear",
+          "due": "2026-10-30",
+          "action": "Theo dõi theo Decision closeout",
+          "related_risk": "",
+          "confidence": "fact",
+          "evidence": "closeout.admin_closure.open_items"
+        },
+        {
+          "id": "IA-003",
+          "type": "Action",
+          "description": "Theo dõi residual: Rework và trễ tiến độ phân tích/thiết kế",
+          "priority": "High",
+          "status": "Open",
+          "owner": "BA – Đinh Đức Thắng",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Chốt SRS có chữ ký 10/07/2026 (WBS 2.5); freeze change sau mốc; change qua Change Management Plan",
+          "related_risk": "R-001",
+          "confidence": "fact",
+          "evidence": "risk_json:R-001"
+        },
+        {
+          "id": "IA-004",
+          "type": "Action",
+          "description": "Theo dõi residual: Trễ kiểm thử tích hợp (SIT) và go-live",
+          "priority": "High",
+          "status": "Open",
+          "owner": "SA – Nguyễn Hải Đăng",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Prototype middleware sớm trong giai đoạn xây dựng (WBS 4.5: 21/08–09/09); staging đủ dữ liệu; contract test 05 luồng",
+          "related_risk": "R-002",
+          "confidence": "fact",
+          "evidence": "risk_json:R-002"
+        },
+        {
+          "id": "IA-005",
+          "type": "Action",
+          "description": "Theo dõi residual: Tiến độ dự án bị chậm do thiếu/thay đổi nhân sự chủ chốt",
+          "priority": "High",
+          "status": "Open",
+          "owner": "PM – Nguyễn Đức Tân",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Tuyển/borrow nhân sự dự phòng; ưu tiên critical path; cross-training",
+          "related_risk": "R-005",
+          "confidence": "fact",
+          "evidence": "risk_json:R-005"
+        },
+        {
+          "id": "IA-006",
+          "type": "Action",
+          "description": "Theo dõi residual: Tranh chấp mốc go-live/nghiệm thu, trễ bàn giao hoặc bị phạt",
+          "priority": "High",
+          "status": "Open",
+          "owner": "PM – Nguyễn Đức Tân",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Chốt 01 baseline duy nhất = WBS (Decision Q-R01); cập nhật HSDT/Master Schedule cho khớp; ghi rõ trong biên bản với ABC Wear; mọi đổi mốc phải qua Change Request",
+          "related_risk": "R-006",
+          "confidence": "fact",
+          "evidence": "risk_json:R-006"
+        },
+        {
+          "id": "IA-007",
+          "type": "Action",
+          "description": "Theo dõi residual: Lỗi nghiêm trọng phát hiện muộn, trượt go-live 01/10/2026",
+          "priority": "High",
+          "status": "Open",
+          "owner": "QC1 – Nguyễn Hữu C",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Dịch chuyển kiểm thử sớm (shift-left) song song xây dựng; tự động hóa regression; freeze code trước SIT; ưu tiên luồng đặt hàng–thanh toán",
+          "related_risk": "R-007",
+          "confidence": "fact",
+          "evidence": "risk_json:R-007"
+        },
+        {
+          "id": "IA-008",
+          "type": "Action",
+          "description": "Theo dõi residual: Phát sinh khối lượng/chi phí (OT, sửa lỗi, hạ tầng) làm dự án lỗ",
+          "priority": "High",
+          "status": "Open",
+          "owner": "PM – Nguyễn Đức Tân",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Kiểm soát change chặt theo Change Management Plan; log giờ theo WBS 3.684 giờ; cảnh báo sớm lệch estimate; đàm phán phụ lục khi vượt phạm vi",
+          "related_risk": "R-008",
+          "confidence": "fact",
+          "evidence": "risk_json:R-008"
+        },
+        {
+          "id": "IA-009",
+          "type": "Action",
+          "description": "Theo dõi residual: Hồ sơ không nhất quán → rủi ro pháp lý/đấu thầu và tranh chấp khi ký hợp đồng",
+          "priority": "High",
+          "status": "Open",
+          "owner": "PM – Nguyễn Đức Tân",
+          "due": "Trong bảo hành / hypercare",
+          "action": "Theo Decision Q-R08 (ưu tiên HSDT): cập nhật HSMT 18.9/18.2 sang Áp dụng, giá trị 8.976.000 VNĐ; sửa hiệu lực BĐDT cho nhất quán; lấy xác nhận văn bản của ABC Wear",
+          "related_risk": "R-015",
+          "confidence": "fact",
+          "evidence": "risk_json:R-015"
+        }
+      ]
+    },
+    "phase_exit_checklist": {
+      "enabled": true,
+      "phase": {
+        "value": "Đóng dự án / Project Closeout",
+        "confidence": "decision",
+        "evidence": "closeout Q-CO-ACT-01"
+      },
+      "gate_decision": {
+        "value": "Conditional Go",
+        "confidence": "decision",
+        "evidence": "Q-SUP-GATE"
+      },
+      "gate_conditions": {
+        "value": "1) Theo dõi bảo hành 12 tháng (Open). 2) Residual risk A tiếp tục monitor. 3) Handover OPS dài hạn hoàn tất checklist.",
+        "confidence": "decision",
+        "evidence": "Q-SUP-GATE + closeout open_items"
+      },
+      "items": [
+        {
+          "item": "SRS / thiết kế & Web Selling Site",
+          "status": "Done",
+          "evidence": "Biên bản nghiệm thu giai phân tích–xây dựng (giả định) (2026-09-25)",
+          "owner": "Nguyễn Đức Tân"
+        },
+        {
+          "item": "UAT",
+          "status": "Done",
+          "evidence": "Biên bản UAT ký bởi key users ABC Wear (M4) (2026-09-25)",
+          "owner": "Nguyễn Đức Tân"
+        },
+        {
+          "item": "Go-live / Cut-over PROD",
+          "status": "Done",
+          "evidence": "Biên bản go-live; smoke test PROD OK (2026-10-01)",
+          "owner": "Nguyễn Đức Tân"
+        },
+        {
+          "item": "Đào tạo end-user & tài liệu bàn giao",
+          "status": "Done",
+          "evidence": "Biên bản đào tạo; bộ tài liệu handover OPS (2026-09-29)",
+          "owner": "Nguyễn Đức Tân"
+        },
+        {
+          "item": "Đóng giai dự án / hypercare",
+          "status": "Done",
+          "evidence": "Báo cáo đóng giai; không issue mở mức High (2026-10-30)",
+          "owner": "Nguyễn Đức Tân"
+        },
+        {
+          "item": "Issue High đã đóng / escalate",
+          "status": "Done",
+          "evidence": "closeout.admin_closure.summary",
+          "owner": "Nguyễn Đức Tân"
+        },
+        {
+          "item": "Rủi ro A có ứng phó + residual theo dõi",
+          "status": "Done",
+          "evidence": "01_risk.json priority A Mitigate",
+          "owner": "Nguyễn Đức Tân"
+        }
+      ]
+    },
+    "peer_evaluation": {
+      "enabled": true,
+      "evaluator": {
+        "value": "Nguyễn Đức Tân",
+        "confidence": "decision",
+        "evidence": "Q-SUP-PEER"
+      },
+      "members": [
+        {
+          "name": "Nguyễn Đức Tân",
+          "role": "PM – Quản lý dự án",
+          "contribution": 5,
+          "collaboration": 5,
+          "quality": 5,
+          "reliability": 5,
+          "comment": "Điều phối baseline lịch/cost; owner risk mặc định."
+        },
+        {
+          "name": "Nguyễn Hải Đăng",
+          "role": "SA – Kiến trúc hệ thống",
+          "contribution": 5,
+          "collaboration": 4,
+          "quality": 5,
+          "reliability": 4,
+          "comment": "Kiến trúc middleware / NFR."
+        },
+        {
+          "name": "Đinh Đức Thắng",
+          "role": "BA – Phân tích nghiệp vụ",
+          "contribution": 4,
+          "collaboration": 5,
+          "quality": 4,
+          "reliability": 4,
+          "comment": "Workshop/UAT — giảm rework yêu cầu."
+        },
+        {
+          "name": "Nguyễn Thị Thu Thủy",
+          "role": "UX – Thiết kế giao diện",
+          "contribution": 4,
+          "collaboration": 4,
+          "quality": 4,
+          "reliability": 4,
+          "comment": "UI/UX hỗ trợ UAT."
+        },
+        {
+          "name": "Nguyễn Thị Phương",
+          "role": "DEV1 – Lập trình viên chính (Module Khách hàng & Tích hợp)",
+          "contribution": 5,
+          "collaboration": 4,
+          "quality": 5,
+          "reliability": 4,
+          "comment": "Module khách hàng & tích hợp."
+        },
+        {
+          "name": "Vũ Tuấn A",
+          "role": "DEV2 – Lập trình viên (Module Sản phẩm, Tìm kiếm & Tồn kho)",
+          "contribution": 4,
+          "collaboration": 4,
+          "quality": 4,
+          "reliability": 4,
+          "comment": "Module theo phân công HSDT."
+        },
+        {
+          "name": "Nguyễn Ngọc B",
+          "role": "DEV3 – Lập trình viên (Module Đơn hàng, Thanh toán & Logistics)",
+          "contribution": 4,
+          "collaboration": 4,
+          "quality": 4,
+          "reliability": 4,
+          "comment": "Module theo phân công HSDT."
+        },
+        {
+          "name": "Nguyễn Hữu C",
+          "role": "QC1 – Kiểm thử trưởng (SIT, Tự động hóa & Hiệu năng)",
+          "contribution": 5,
+          "collaboration": 4,
+          "quality": 5,
+          "reliability": 5,
+          "comment": "SIT / hiệu năng / tự động hóa."
+        },
+        {
+          "name": "Phạm Minh D",
+          "role": "QC2 – Chuyên viên Kiểm thử (Kiểm thử chức năng, Bảo mật & UAT)",
+          "contribution": 4,
+          "collaboration": 4,
+          "quality": 4,
+          "reliability": 4,
+          "comment": "Functional / bảo mật / UAT."
+        },
+        {
+          "name": "Trần Hùng E",
+          "role": "OPS – Kỹ sư Hạ tầng, DevOps và Vận hành",
+          "contribution": 4,
+          "collaboration": 4,
+          "quality": 4,
+          "reliability": 4,
+          "comment": "Module theo phân công HSDT."
+        }
+      ],
+      "team_strengths": {
+        "value": "Đội hình đủ vai trò PM/SA/BA/UX/DEV/QC/OPS theo HSDT; tích hợp middleware có chủ sở hữu rõ.",
+        "confidence": "de_xuat",
+        "evidence": "masterplan.roles + HSDT"
+      },
+      "team_improve": {
+        "value": "Giảm phụ thuộc nhân sự chủ chốt (R-005); chốt SRS sớm hơn để giảm rework.",
+        "confidence": "de_xuat",
+        "evidence": "risk_json R-001/R-005"
+      },
+      "personal_lesson": {
+        "value": "Freeze change sau SRS ký; prototype tích hợp sớm; tách đóng dự án vs bảo hành.",
+        "confidence": "decision",
+        "evidence": "Q-SUP-PEER + closeout.lessons"
+      }
+    },
+    "selection_matrix": {
+      "enabled": true,
+      "recommendation": {
+        "value": "Phương án A (ABC Wear WSS) đạt 4.1/5.0 điểm có trọng số — khuyến nghị triển khai (đã thực hiện theo Closeout).",
+        "confidence": "decision",
+        "evidence": "Q-SUP-SEL"
+      },
+      "criteria": [
+        {
+          "name": "Khớp chiến lược bán lẻ / omnichannel",
+          "weight": 0.25,
+          "option_a": "5",
+          "option_b": "",
+          "option_c": "",
+          "notes": "PA = ABC Wear WSS"
+        },
+        {
+          "name": "Khả thi kỹ thuật (middleware, NFR)",
+          "weight": 0.25,
+          "option_a": "4",
+          "option_b": "",
+          "option_c": "",
+          "notes": "Fact HSDT NFR"
+        },
+        {
+          "name": "Ngân sách / ROI",
+          "weight": 0.2,
+          "option_a": "4",
+          "option_b": "",
+          "option_c": "",
+          "notes": "897.6 triệu VAT"
+        },
+        {
+          "name": "Rủi ro triển khai",
+          "weight": 0.15,
+          "option_a": "3",
+          "option_b": "",
+          "option_c": "",
+          "notes": "Risk A — Mitigate"
+        },
+        {
+          "name": "Năng lực team",
+          "weight": 0.15,
+          "option_a": "4",
+          "option_b": "",
+          "option_c": "",
+          "notes": "10 nhân sự chủ chốt"
+        }
+      ],
+      "totals": {
+        "weight_sum": 1.0,
+        "option_a": 4.1,
+        "option_b": "",
+        "option_c": ""
+      }
+    },
+    "portfolio": {
+      "enabled": true,
+      "projects": [
+        {
+          "code": "ABC-WSS-PM_26I_09",
+          "name": "Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09)",
+          "sponsor": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+          "pm": "Nguyễn Đức Tân",
+          "phase_or_status": "Closed (dự án) / Bảo hành Open",
+          "budget": "897.600.000 VNĐ",
+          "priority": "High",
+          "risk_flag": "A residual theo dõi",
+          "notes": "Fact từ masterplan + closeout + risk"
+        }
+      ]
+    },
+    "stakeholder_post_eval": {
+      "enabled": true,
+      "stakeholder_name": {
+        "value": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+        "confidence": "fact",
+        "evidence": "closeout"
+      },
+      "what_went_well": {
+        "value": "Mitigate: Chốt SRS có chữ ký; freeze change sau mốc đã thỏa thuận; Mitigate: Prototype tích hợp sớm; môi trường staging đủ dữ liệu; Mitigate: Tuyển / borrow SE; ưu tiên critical path",
+        "confidence": "de_xuat",
+        "evidence": "closeout.lessons"
+      },
+      "main_challenges": {
+        "value": "Rework và trễ tiến độ phân tích/thiết kế (Yêu cầu nghiệp vụ chưa chốt đủ trước khi thiết kế); Trễ kiểm thử tích hợp và go-live (Tích hợp Main System / Selling DB phức tạp); Tiến độ dự án bị chậm (Thiếu kỹ sư hệ thống trong team); Đóng dự án nhưng còn cửa sổ bảo hành 12 tháng (Cam kết HSDT — bảo hành sau nghiệm thu)",
+        "confidence": "fact",
+        "evidence": "closeout.lessons"
+      },
+      "recommendations": {
+        "value": "Mitigate: Chốt SRS có chữ ký; freeze change sau mốc đã thỏa thuận; Mitigate: Prototype tích hợp sớm; môi trường staging đủ dữ liệu; Mitigate: Tuyển / borrow SE; ưu tiên critical path; Tách rõ “đóng giai dự án” vs “đóng nghĩa vụ bảo hành”; duy trì hypercare/handover OPS",
+        "confidence": "fact",
+        "evidence": "closeout.lessons"
+      },
+      "rating_objectives": {
+        "value": "5",
+        "confidence": "decision",
+        "evidence": "Q-SUP-POST-RATING + closeout baselines"
+      },
+      "rating_communication": {
+        "value": "4",
+        "confidence": "decision",
+        "evidence": "Q-SUP-POST-RATING"
+      },
+      "rating_change_risk": {
+        "value": "4",
+        "confidence": "decision",
+        "evidence": "Q-SUP-POST-RATING + risk A Mitigate"
+      },
+      "rating_ops": {
+        "value": "4",
+        "confidence": "decision",
+        "evidence": "Q-SUP-POST-RATING + bảo hành còn Open"
+      }
+    },
+    "post_impl_survey": {
+      "enabled": true,
+      "respondent": {
+        "value": "Đại diện key user / OPS ABC Wear",
+        "confidence": "decision",
+        "evidence": "Q-SUP-SURVEY (đại diện tổ chức — Manual duyệt)"
+      },
+      "role": {
+        "value": "Key user / OPS",
+        "confidence": "decision",
+        "evidence": "Q-SUP-SURVEY"
+      },
+      "answers": [
+        {
+          "question": "Hệ thống đáp ứng nhu cầu công việc hàng ngày",
+          "score": 5
+        },
+        {
+          "question": "Hiệu năng / ổn định đạt kỳ vọng",
+          "score": 4
+        },
+        {
+          "question": "Đào tạo và tài liệu hỗ trợ đủ dùng",
+          "score": 4
+        },
+        {
+          "question": "Hỗ trợ sau go-live kịp thời",
+          "score": 4
+        },
+        {
+          "question": "Tôi sẵn sàng giới thiệu giải pháp cho đơn vị khác",
+          "score": 4
+        }
+      ],
+      "improve_now": {
+        "value": "Duy trì hypercare/handover OPS; theo dõi bảo hành 12 tháng.",
+        "confidence": "fact",
+        "evidence": "closeout open_items"
+      },
+      "best_practice": {
+        "value": "Prototype tích hợp sớm; chốt SRS có chữ ký; tách đóng dự án vs bảo hành.",
+        "confidence": "fact",
+        "evidence": "closeout.lessons"
+      }
+    }
+  }
+}

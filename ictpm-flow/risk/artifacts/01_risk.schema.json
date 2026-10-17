@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "01_risk",
+  "type": "object",
+  "required": ["status", "facts", "plan", "risks", "validation"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["draft", "ready_for_review", "approved"]
+    },
+    "rules_version": { "type": "string" },
+    "inputs": { "type": "object" },
+    "facts": { "type": "array" },
+    "questions_for_manual": { "type": "array" },
+    "decisions": { "type": "object" },
+    "plan": { "type": "object" },
+    "risks": { "type": "array" },
+    "monitor": { "type": "object" },
+    "validation": { "type": "object" }
+  }
+}

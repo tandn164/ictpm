@@ -1,0 +1,119 @@
+
+===== PAGE 1 =====
+RF
+
+( Request For Proposal )
+
+20XX.Feb.22
+ABC Wear
+
+
+===== PAGE 2 =====
+HM Overview the System
+
+@ The Goal of the Project
+- Expand customers using internet, new selling channel.
+
+@ Basic Policy of Development
+-Easy Operation for the Customer
+-Use anytime (24hours and 365Days running )
+Quick response time (within 2 seconds )
+
+@ The Image of New Systems
+
+Web Site Selling System Main System
+
+Selling «OF
+DB Selling, Products,
+[ce | Logistics, Dealing
+Customer |
+
+Y
+
+: < Transportation
+Operation
+Customer
+@ Cutover
++20XX. July. 1
+
+® Project Scope
+-Develop the Web Selling Sit System (System Analysis to Operation Test)
+
+@ Request for Proposal
+
+Please includes the following information in your proposal.
+Also, please add another points which are needed to project success, if any.
+
+@Precondition: «Please show us your precondition in proposal.
+
+@Estimated Cost: - - Please show us your estimated cost for this project with reason.
+@Project Scope: : : Please show us your scope of activities which relate to our standard.
+@Deliverables: - - Please show us the deliverables in contract.
+
+®Schedule- - -Please show us the schedule until the day of cut over.
+
+@®Organization- - - Please show us your companies organization for this project.
+@Meeting:+++++* Please suggest us the appropriate meeting plan.
+
+®Roles:+++++ Please show us the roles and responsibilities.
+
+@Other Conditions: - -Showus if you have any other conditions relate to contract.
+(Request for us: - «If you have any request for us, please tell us.
+
+
+
+===== PAGE 3 =====
+@ The procedure of proposal
+
+@ Presentation
+“Date 10 copies of proposal should be submitted by March 8*".
+We would tell you the accurate time for presentation.
+*Place Our headquarter) Meeting room A
+
+@ How to deal with RFP
+RFP includes our confidential information. Please keep secure and manage well.
+
+@ Questions
+
+If you have any questions about RFP, ask us by e-mail or coming to our home.
+
+*Person in charge: Planning Division) Yamada (yamada@abc.com)
+*Duration February 22th to March 7th
+
+H@ Contract Agreement
+
+The outline of our basic contract are as follows;
+
+(Party A is ABC Wear, Party B is Inter Solution)
+
+-Party B start to develop the system just after we get the contract agreement.
+Party A or Party B can change specifications if needed.
+«When Party B need to out source, Party B have to request Party A by paper to be permitted
+about it.
+Party B have to delivery the deliverables by the agreed place and date.
+Party A inspect the deliverables in the condition which are written in the specifications and tell
+the result Party B.
+Pass of this inspection means acceptance.
++All of the ownership and copyright relate to developed deliverables and technical performance
+throughout this project belong to Party A.
+When Party B need to use those for someone else need to be permitted by Party A.
++The logical mistake in the deliverables or other problems which should be attributed to Party
+B, Party B have to modify or add with Party B’s responsibility and cost as soon as possible.
++The duration that Party B have to take a responsibility are in one year.
+
+
+===== PAGE 4 =====
+@ Deliverables
+
+@ Specification
+-Web Selling Site System
+
+>The internal administrative function are out of scope in this project.
+
+@ New Operational Flow
+
+
+===== PAGE 5 =====
+@ Database Structure (Selling DB)
+
+@ Menu Layer

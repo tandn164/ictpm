@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "01_hsmt",
+  "type": "object",
+  "required": ["status", "facts", "chuong_ii", "chuong_iii", "chuong_iv", "chuong_v", "validation"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["draft", "ready_for_review", "approved"]
+    },
+    "rules_version": { "type": "string" },
+    "inputs": { "type": "object" },
+    "facts": { "type": "array" },
+    "questions_for_manual": { "type": "array" },
+    "decisions": { "type": "object" },
+    "chuong_ii": { "type": "object" },
+    "chuong_iii": { "type": "object" },
+    "chuong_iv": { "type": "object" },
+    "chuong_v": { "type": "object" },
+    "validation": { "type": "object" }
+  }
+}

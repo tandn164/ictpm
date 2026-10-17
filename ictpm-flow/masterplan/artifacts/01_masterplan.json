@@ -1,0 +1,460 @@
+{
+  "status": "approved",
+  "rules_version": "ictpm-flow/masterplan/rules @ 2026-10-17",
+  "inputs": {
+    "template": "ictpm-flow/masterplan/templates/masterplan.docx",
+    "inventory": {
+      "hsdt": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+      },
+      "wbs": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+      },
+      "master_schedule": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/04_Master_Schedule.docx"
+      },
+      "risk_json": {
+        "status": "found",
+        "path": "ictpm-flow/risk/artifacts/01_risk.json"
+      },
+      "hsmt_json": {
+        "status": "missing",
+        "path": null
+      },
+      "rfp": {
+        "status": "found",
+        "path": "RFP.pdf"
+      }
+    }
+  },
+  "facts": [
+    {
+      "id": "F-MP01",
+      "noi_dung": "Gói thầu ABC-WSS-PM_26I_09 — Xây dựng hệ thống kênh bán hàng qua Internet cho ABC Wear",
+      "nguon": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    {
+      "id": "F-MP02",
+      "noi_dung": "Giá dự thầu sau giảm giá: 897.600.000 VNĐ (VAT); BĐDT 8.976.000 VNĐ",
+      "nguon": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    {
+      "id": "F-MP03",
+      "noi_dung": "WBS: 2026-06-22 → 2026-10-30; Go-live 2026-10-01; UAT 2026-09-21→25",
+      "nguon": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+    },
+    {
+      "id": "F-MP04",
+      "noi_dung": "Master Schedule (bảng dịch vụ) kết thúc nhóm triển khai/go-live 28/10/2026; một số ngày chức năng lệch WBS",
+      "nguon": "ictpm-flow/masterplan/artifacts/inputs/04_Master_Schedule.docx"
+    },
+    {
+      "id": "F-MP05",
+      "noi_dung": "HSDT có đoạn 06 giai → 22/12/2026; Manual đã chốt baseline theo WBS (go-live 01/10/2026, đóng 30/10/2026) — Decision Q-MP08",
+      "nguon": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    }
+  ],
+  "questions_for_manual": [],
+  "decisions": {
+    "Q-MP08": {
+      "quyet_dinh": "Baseline lịch theo WBS: go-live 01/10/2026, đóng dự án 30/10/2026. Không dùng đoạn HSDT 06 giai → 22/12/2026. Master Schedule chỉ tham chiếu; lệch ngày chức năng lấy WBS.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-MP04": {
+      "quyet_dinh": "Chốt ngân sách theo giá HSDT 897.600.000 VNĐ (đã VAT). BĐDT 8.976.000 VNĐ ghi chú kèm.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-MP03": {
+      "quyet_dinh": "Giữ roles như HSDT (Sponsor ABC Wear + nhân sự chủ chốt HSDT).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-MP06": {
+      "quyet_dinh": "approved — fill chính thức 01_masterplan_draft.docx",
+      "by": "Manual",
+      "at": "2026-10-17"
+    }
+  },
+  "project": {
+    "name": {
+      "value": "Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09)",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    "code": {
+      "value": "ABC-WSS-PM_26I_09",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    "company": {
+      "value": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    "pm": {
+      "value": "Nguyễn Đức Tân",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    "date": {
+      "value": "2026-10-17",
+      "confidence": "decision",
+      "evidence": "Q-MP06"
+    },
+    "version": {
+      "value": "1.0",
+      "confidence": "decision",
+      "evidence": "Q-MP06 approved"
+    }
+  },
+  "overview": {
+    "project_summary": {
+      "value": "Xây dựng Web Selling Site cho chuỗi thời trang ABC Wear (~25 cửa hàng): kênh bán hàng Internet tích hợp Main System qua middleware (không kết nối trực tiếp Main DB từ trình duyệt). Nhà thầu Nhóm 09-20261; frontend Next.js; cam kết NFR P95 ≤ 2s, sẵn sàng ≥ 99,5%; bảo hành 12 tháng sau nghiệm thu.",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    "scope_in": {
+      "value": [
+        "1: Hồ sơ quản lý dự án",
+        "2: SRS",
+        "3: Tài liệu thiết kế hệ thống SDD",
+        "4: Mã nguồn, cấu hình, bản build",
+        "5: Hồ sơ kiểm thử",
+        "6: Hệ thống vận hành chính thức"
+      ],
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+    },
+    "scope_out": {
+      "value": [
+        "Thay thế toàn bộ Main System / Main DB của ABC Wear",
+        "Vận hành dài hạn sau hết bảo hành 12 tháng (trừ thỏa thuận riêng)"
+      ],
+      "confidence": "de_xuat",
+      "evidence": "suy từ HSDT kiến trúc không kết nối trực tiếp Main DB"
+    },
+    "assumptions": {
+      "value": [
+        "ABC Wear bố trí đại diện nghiệp vụ cho workshop/UAT đúng lịch",
+        "Môi trường & API Main System sẵn sàng theo kế hoạch tích hợp",
+        "Baseline lịch đã chốt theo WBS (Q-MP08)"
+      ],
+      "confidence": "decision",
+      "evidence": "Q-MP08 + HSDT/WBS"
+    },
+    "constraints": {
+      "value": [
+        "Ngân sách: 897.600.000 VNĐ (đã VAT) — Decision Q-MP04 theo HSDT",
+        "Baseline lịch WBS: 22/06/2026–30/10/2026; go-live 01/10/2026 — Decision Q-MP08",
+        "NFR: P95 ≤ 2 giây; availability ≥ 99,5%"
+      ],
+      "confidence": "decision",
+      "evidence": "Q-MP04; Q-MP08; HSDT"
+    },
+    "management_approach": {
+      "value": "Hybrid theo phase WBS (Khởi động → Phân tích → Thiết kế → Xây dựng → Kiểm thử → Triển khai/go-live → Đóng). Họp tiến độ tuần; rủi ro/vấn đề theo dõi liên tục; đổi baseline qua thỏa thuận Sponsor. Chi tiết risk: module Risk.",
+      "confidence": "de_xuat",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+    }
+  },
+  "roles_intro": {
+    "value": "Tổ chức theo HSDT: Sponsor ABC Wear; PM Nguyễn Đức Tân điều phối 10 nhân sự chủ chốt.",
+    "confidence": "fact",
+    "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+  },
+  "roles": [
+    {
+      "name": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+      "role": "Project Sponsor / Chủ đầu tư",
+      "responsibility": "Định hướng, cấp nguồn lực, phê duyệt UAT/go-live và thay đổi lớn."
+    },
+    {
+      "name": "Nguyễn Đức Tân",
+      "role": "PM – Quản lý dự án",
+      "responsibility": "PM – Quản lý dự án"
+    },
+    {
+      "name": "Nguyễn Hải Đăng",
+      "role": "SA – Kiến trúc hệ thống",
+      "responsibility": "SA – Kiến trúc hệ thống"
+    },
+    {
+      "name": "Đinh Đức Thắng",
+      "role": "BA – Phân tích nghiệp vụ",
+      "responsibility": "BA – Phân tích nghiệp vụ"
+    },
+    {
+      "name": "Nguyễn Thị Thu Thủy",
+      "role": "UX – Thiết kế giao diện",
+      "responsibility": "UX – Thiết kế giao diện"
+    },
+    {
+      "name": "Nguyễn Thị Phương",
+      "role": "DEV1 – Lập trình viên chính (Module Khách hàng & Tích hợp)",
+      "responsibility": "DEV1 – Lập trình viên chính (Module Khách hàng & Tích hợp)"
+    },
+    {
+      "name": "Vũ Tuấn A",
+      "role": "DEV2 – Lập trình viên (Module Sản phẩm, Tìm kiếm & Tồn kho)",
+      "responsibility": "DEV2 – Lập trình viên (Module Sản phẩm, Tìm kiếm & Tồn kho)"
+    },
+    {
+      "name": "Nguyễn Ngọc B",
+      "role": "DEV3 – Lập trình viên (Module Đơn hàng, Thanh toán & Logistics)",
+      "responsibility": "DEV3 – Lập trình viên (Module Đơn hàng, Thanh toán & Logistics)"
+    },
+    {
+      "name": "Nguyễn Hữu C",
+      "role": "QC1 – Kiểm thử trưởng (SIT, Tự động hóa & Hiệu năng)",
+      "responsibility": "QC1 – Kiểm thử trưởng (SIT, Tự động hóa & Hiệu năng)"
+    },
+    {
+      "name": "Phạm Minh D",
+      "role": "QC2 – Chuyên viên Kiểm thử (Kiểm thử chức năng, Bảo mật & UAT)",
+      "responsibility": "QC2 – Chuyên viên Kiểm thử (Kiểm thử chức năng, Bảo mật & UAT)"
+    },
+    {
+      "name": "Trần Hùng E",
+      "role": "OPS – Kỹ sư Hạ tầng, DevOps và Vận hành",
+      "responsibility": "OPS – Kỹ sư Hạ tầng, DevOps và Vận hành"
+    }
+  ],
+  "communications_intro": {
+    "value": "Báo cáo tuần cho Sponsor; họp tiến độ theo WBS; escalation issue High trong 24–48h.",
+    "confidence": "de_xuat",
+    "evidence": "rules/communications.md"
+  },
+  "communications": [
+    {
+      "stakeholder_group": "Project Sponsor (ABC Wear)",
+      "item": "Status report, rủi ro A, issue High, milestone",
+      "purpose": "Ra quyết định và phê duyệt"
+    },
+    {
+      "stakeholder_group": "Ban dự án / team triển khai",
+      "item": "Họp tiến độ tuần, standup phase",
+      "purpose": "Đồng bộ công việc và rủi ro"
+    },
+    {
+      "stakeholder_group": "Nghiệp vụ / key users",
+      "item": "Workshop, UAT, đào tạo",
+      "purpose": "Xác nhận yêu cầu và chấp nhận"
+    }
+  ],
+  "schedule_intro": {
+    "value": "Baseline lịch theo Decision Q-MP08 = WBS (go-live 01/10/2026, đóng 30/10/2026). Chi tiết task giữ ở file WBS. Master Schedule chỉ đối chiếu.",
+    "confidence": "decision",
+    "evidence": "Q-MP08"
+  },
+  "schedule": [
+    {
+      "milestone": "1 Quản lý dự án",
+      "start": "2026-06-22",
+      "end": "2026-10-30",
+      "actual_or_pct": "",
+      "owner": "PM"
+    },
+    {
+      "milestone": "1.1 Khởi động dự án",
+      "start": "2026-06-22",
+      "end": "2026-06-25",
+      "actual_or_pct": "",
+      "owner": "PM"
+    },
+    {
+      "milestone": "2 Phân tích hệ thống (System Analysis)",
+      "start": "2026-06-22",
+      "end": "2026-07-10",
+      "actual_or_pct": "",
+      "owner": "BA"
+    },
+    {
+      "milestone": "3 Thiết kế hệ thống",
+      "start": "2026-07-03",
+      "end": "2026-07-31",
+      "actual_or_pct": "",
+      "owner": "SA"
+    },
+    {
+      "milestone": "4 Xây dựng, Phát triển hệ thống",
+      "start": "2026-08-03",
+      "end": "2026-09-11",
+      "actual_or_pct": "",
+      "owner": "DEV"
+    },
+    {
+      "milestone": "5 Kiểm thử (Testing)",
+      "start": "2026-08-11",
+      "end": "2026-09-25",
+      "actual_or_pct": "",
+      "owner": "QA"
+    },
+    {
+      "milestone": "5.6 Kiểm thử vận hành (UAT )",
+      "start": "2026-09-21",
+      "end": "2026-09-25",
+      "actual_or_pct": "",
+      "owner": "BA"
+    },
+    {
+      "milestone": "6 Triển khai & chuyển giao",
+      "start": "2026-09-18",
+      "end": "2026-10-28",
+      "actual_or_pct": "",
+      "owner": "OPS"
+    },
+    {
+      "milestone": "6.5 Go-live",
+      "start": "2026-10-01",
+      "end": "2026-10-01",
+      "actual_or_pct": "",
+      "owner": "OPS"
+    }
+  ],
+  "issues_intro": {
+    "value": "Issue = việc đã xảy ra; ghi nhận, gán owner, theo dõi đến đóng. Khác Risk.",
+    "confidence": "de_xuat",
+    "evidence": "rules/issues.md"
+  },
+  "issues": [],
+  "risk_summary": {
+    "value": "Tóm tắt từ module Risk (01_risk.json). Chi tiết register/plan nằm ở ictpm-flow/risk/.",
+    "confidence": "fact",
+    "evidence": "ictpm-flow/risk/artifacts/01_risk.json"
+  },
+  "risks_top": [
+    {
+      "id": "R-001",
+      "title": "Rework và trễ tiến độ phân tích/thiết kế",
+      "description": "Yêu cầu nghiệp vụ chưa chốt đủ trước khi thiết kế",
+      "date_identified": "",
+      "originator": "BA Lead",
+      "priority": "A",
+      "response": "Mitigate: Chốt SRS có chữ ký; freeze change sau mốc đã thỏa thuận"
+    },
+    {
+      "id": "R-002",
+      "title": "Trễ kiểm thử tích hợp và go-live",
+      "description": "Tích hợp Main System / Selling DB phức tạp",
+      "date_identified": "",
+      "originator": "SA",
+      "priority": "A",
+      "response": "Mitigate: Prototype tích hợp sớm; môi trường staging đủ dữ liệu"
+    },
+    {
+      "id": "R-005",
+      "title": "Tiến độ dự án bị chậm",
+      "description": "Thiếu kỹ sư hệ thống trong team",
+      "date_identified": "",
+      "originator": "PM",
+      "priority": "A",
+      "response": "Mitigate: Tuyển / borrow SE; ưu tiên critical path"
+    },
+    {
+      "id": "R-003",
+      "title": "Thiếu nhu cầu thực tế, UAT fail",
+      "description": "End-user / nghiệp vụ tham gia hạn chế",
+      "date_identified": "",
+      "originator": "PM",
+      "priority": "B",
+      "response": "Mitigate: Lịch workshop bắt buộc; đại diện nghiệp vụ trong UAT"
+    },
+    {
+      "id": "R-004",
+      "title": "Không đáp ứng đủ yêu cầu nghiệp vụ đặc thù",
+      "description": "Dùng package khó customize",
+      "date_identified": "",
+      "originator": "SA",
+      "priority": "B",
+      "response": "Mitigate: Spike customize + phương án fallback tự phát triển module"
+    }
+  ],
+  "transition_intro": {
+    "value": "Checklist sẵn sàng trước go-live theo WBS giai Triển khai & chuyển giao.",
+    "confidence": "fact",
+    "evidence": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+  },
+  "transition": [
+    {
+      "item": "UAT ký biên bản (M4)",
+      "ready": "No",
+      "mitigation_if_no": "Hoàn thành UAT 21–25/09/2026 theo WBS"
+    },
+    {
+      "item": "Go-live PROD 01/10/2026",
+      "ready": "No",
+      "mitigation_if_no": "Cut-over plan + rollback; OPS phụ trách"
+    },
+    {
+      "item": "Đào tạo end-user",
+      "ready": "No",
+      "mitigation_if_no": "WBS 6.3 Đào tạo 28–29/09/2026"
+    },
+    {
+      "item": "Hypercare 01 tháng sau go-live",
+      "ready": "No",
+      "mitigation_if_no": "WBS 6.6 đến 28/10/2026"
+    },
+    {
+      "item": "Bảo hành 12 tháng sau nghiệm thu",
+      "ready": "No",
+      "mitigation_if_no": "Cam kết HSDT — kích hoạt sau nghiệm thu"
+    }
+  ],
+  "cost_summary": {
+    "value": "Ngân sách dự án chốt theo giá dự thầu HSDT: 897.600.000 VNĐ (đã gồm VAT 10%). Decision Q-MP04.",
+    "confidence": "decision",
+    "evidence": "Q-MP04; HSDT.docx"
+  },
+  "cost_items": [
+    {
+      "item": "Giá dự thầu (sau giảm giá 0%)",
+      "amount": "897.600.000 VNĐ",
+      "note": "Đã gồm VAT"
+    },
+    {
+      "item": "Bảo đảm dự thầu (1%)",
+      "amount": "8.976.000 VNĐ",
+      "note": "BIDV Hà Thành — theo HSDT"
+    }
+  ],
+  "quality_summary": {
+    "value": "NFR và nghiệm thu theo HSDT; UAT/go-live theo WBS.",
+    "confidence": "fact",
+    "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+  },
+  "quality_criteria": [
+    {
+      "deliverable": "Hiệu năng",
+      "how_tested": "Kiểm thử hiệu năng",
+      "acceptance": "P95 ≤ 2 giây (tiêu chí A2)"
+    },
+    {
+      "deliverable": "Sẵn sàng",
+      "how_tested": "Kiến trúc Multi-AZ / health-check",
+      "acceptance": "Availability ≥ 99,5% (A1)"
+    },
+    {
+      "deliverable": "UAT",
+      "how_tested": "Key users thực hiện kịch bản",
+      "acceptance": "Biên bản UAT ký (M4)"
+    },
+    {
+      "deliverable": "Go-live",
+      "how_tested": "Smoke test PROD",
+      "acceptance": "Hệ thống ổn định; mở hypercare"
+    }
+  ],
+  "validation": {
+    "vong": 2,
+    "ket_luan": "approved — Manual đã trả Q-MP08/04/03/06; fill chính thức",
+    "A": [],
+    "B": [],
+    "C": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ICTPM Project Closeout Report",
+  "type": "object",
+  "required": [
+    "status",
+    "project"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "ready_for_review",
+        "approved"
+      ]
+    },
+    "project": {
+      "type": "object"
+    },
+    "effectiveness": {
+      "type": "object"
+    },
+    "lessons": {
+      "type": "array"
+    },
+    "admin_closure": {
+      "type": "object"
+    },
+    "contract_closure": {
+      "type": "object"
+    },
+    "archive": {
+      "type": "object"
+    },
+    "inputs": {
+      "type": "object"
+    }
+  }
+}

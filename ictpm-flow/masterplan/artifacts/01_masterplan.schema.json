@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ictpm-flow/masterplan/01_masterplan.schema.json",
+  "title": "ICTPM Master Plan",
+  "type": "object",
+  "required": ["status", "project", "overview", "roles"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["draft", "ready_for_review", "approved"]
+    },
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": {},
+        "code": {},
+        "company": {},
+        "pm": {},
+        "date": {},
+        "version": {}
+      }
+    },
+    "overview": {
+      "type": "object",
+      "properties": {
+        "project_summary": {},
+        "scope_in": {},
+        "scope_out": {},
+        "assumptions": {},
+        "constraints": {},
+        "management_approach": {}
+      }
+    },
+    "roles_intro": {},
+    "roles": { "type": "array" },
+    "communications_intro": {},
+    "communications": { "type": "array" },
+    "schedule_intro": {},
+    "schedule": { "type": "array" },
+    "issues_intro": {},
+    "issues": { "type": "array" },
+    "risk_summary": {},
+    "risks_top": { "type": "array" },
+    "transition_intro": {},
+    "transition": { "type": "array" },
+    "cost_summary": {},
+    "cost_items": { "type": "array" },
+    "quality_summary": {},
+    "quality_criteria": { "type": "array" },
+    "questions_for_manual": { "type": "array" },
+    "facts": { "type": "array" },
+    "decisions": { "type": "object" }
+  }
+}

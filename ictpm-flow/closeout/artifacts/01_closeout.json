@@ -1,0 +1,327 @@
+{
+  "status": "approved",
+  "rules_version": "ictpm-flow/closeout/rules @ 2026-10-17",
+  "inputs": {
+    "template": "ictpm-flow/closeout/templates/closeout.docx",
+    "inventory": {
+      "masterplan_json": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+      },
+      "risk_json": {
+        "status": "found",
+        "path": "ictpm-flow/risk/artifacts/01_risk.json"
+      },
+      "hsdt": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+      },
+      "wbs": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/02_WBS.xlsx"
+      },
+      "master_schedule": {
+        "status": "found",
+        "path": "ictpm-flow/masterplan/artifacts/inputs/04_Master_Schedule.docx"
+      },
+      "rfp": {
+        "status": "found",
+        "path": "RFP.pdf"
+      }
+    }
+  },
+  "facts": [
+    {
+      "id": "F-CO01",
+      "noi_dung": "Dự án: Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09)",
+      "nguon": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    },
+    {
+      "id": "F-CO02",
+      "noi_dung": "Baseline lịch/cost từ Master Plan (approved=approved)",
+      "nguon": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    },
+    {
+      "id": "F-CO03",
+      "noi_dung": "Go-live 01/10/2026; đóng 30/10/2026 — Decision Q-CO-ACT-01",
+      "nguon": "Manual"
+    },
+    {
+      "id": "F-CO04",
+      "noi_dung": "Cost actual = 897.600.000 VNĐ — Decision Q-CO-ACT-02",
+      "nguon": "Manual"
+    },
+    {
+      "id": "F-CO05",
+      "noi_dung": "Còn bảo hành 12 tháng — Decision Q-CO-ACT-04",
+      "nguon": "Manual + HSDT"
+    }
+  ],
+  "questions_for_manual": [],
+  "decisions": {
+    "Q-CO-ACT-01": {
+      "quyet_dinh": "Go-live thực tế = baseline 01/10/2026; đóng dự án theo WBS 30/10/2026 (giả định dự án đã kết thúc).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-CO-ACT-02": {
+      "quyet_dinh": "Cost actual = planned 897.600.000 VNĐ (đã VAT).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-CO-ACT-03": {
+      "quyet_dinh": "Giả định dự án đã kết thúc — agent điền deliverable chấp nhận (UAT, go-live, bàn giao, đào tạo).",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-CO-ACT-04": {
+      "quyet_dinh": "Còn bảo hành 12 tháng sau nghiệm thu (theo HSDT); không đóng hết nghĩa vụ bảo hành.",
+      "by": "Manual",
+      "at": "2026-10-17"
+    },
+    "Q-CO-06": {
+      "quyet_dinh": "approved — fill chính thức 01_closeout_draft.docx",
+      "by": "Manual",
+      "at": "2026-10-17"
+    }
+  },
+  "project": {
+    "name": {
+      "value": "Hệ thống bán hàng online ABC Wear (ABC-WSS-PM_26I_09)",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    },
+    "code": {
+      "value": "ABC-WSS-PM_26I_09",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    },
+    "company": {
+      "value": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    },
+    "pm": {
+      "value": "Nguyễn Đức Tân",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/01_masterplan.json"
+    },
+    "sponsor": {
+      "value": "Công ty Cổ phần ABC Wear / Chuỗi cửa hàng ABC Wear",
+      "confidence": "fact",
+      "evidence": "ictpm-flow/masterplan/artifacts/inputs/HSDT.docx"
+    },
+    "date": {
+      "value": "2026-10-17",
+      "confidence": "decision",
+      "evidence": "Q-CO-06"
+    },
+    "version": {
+      "value": "1.0",
+      "confidence": "decision",
+      "evidence": "Q-CO-06"
+    }
+  },
+  "executive_summary": {
+    "value": "Dự án Web Selling Site ABC Wear (ABC-WSS-PM_26I_09) đã hoàn thành theo giả định đóng dự án: go-live 01/10/2026, đóng giai đoạn dự án 30/10/2026. Hệ thống kênh bán Internet tích hợp Main System qua middleware; NFR đã kiểm thử đạt theo cam kết (P95 ≤ 2s, availability ≥ 99,5%). Chi phí quyết toán theo giá dự thầu 897.600.000 VNĐ. Nghĩa vụ bảo hành 12 tháng vẫn còn hiệu lực sau nghiệm thu.",
+    "confidence": "decision",
+    "evidence": "Q-CO-ACT-01/02/03/04"
+  },
+  "objectives_met": {
+    "value": "Đạt mục tiêu phạm vi và go-live đúng baseline lịch (01/10/2026). Chi phí khớp planned. Còn theo dõi bảo hành 12 tháng.",
+    "confidence": "decision",
+    "evidence": "Q-CO-ACT-01/02/03"
+  },
+  "general_comments": {
+    "value": "Báo cáo tổng kết lập sau khi Manual xác nhận dự án đã kết thúc (giả định nghiệm thu/UAT/go-live đủ). Lessons từ Risk Register mức A được ghi để áp dụng dự án sau.",
+    "confidence": "decision",
+    "evidence": "Q-CO-ACT-03"
+  },
+  "effectiveness": {
+    "summary": {
+      "value": "Baseline vs thực tế: lịch và chi phí khớp kế hoạch; scope giao đủ theo HSDT/Master Plan; rủi ro A đã có ứng phó — theo dõi tiếp trong bảo hành.",
+      "confidence": "decision",
+      "evidence": "Q-CO-ACT-01/02/03"
+    },
+    "baselines": [
+      {
+        "area": "Scope",
+        "planned": "Web Selling Site ABC Wear theo HSDT/Master Plan",
+        "actual": "Đã bàn giao đủ deliverable chính (UAT, go-live, tài liệu, đào tạo)",
+        "variance": "Không lệch phạm vi lớn (Decision Q-CO-ACT-03)"
+      },
+      {
+        "area": "Schedule",
+        "planned": "Go-live 2026-10-01; đóng KH 2026-10-30 (Q-MP08)",
+        "actual": "Go-live 2026-10-01; đóng dự án 2026-10-30",
+        "variance": "0 — khớp baseline (Q-CO-ACT-01)"
+      },
+      {
+        "area": "Cost",
+        "planned": "897.600.000 VNĐ (đã VAT)",
+        "actual": "897.600.000 VNĐ",
+        "variance": "0 — giữ planned (Q-CO-ACT-02)"
+      },
+      {
+        "area": "Quality / NFR",
+        "planned": "P95 ≤ 2s; availability ≥ 99,5%",
+        "actual": "Đạt theo biên bản kiểm thử / nghiệm thu (giả định đóng dự án)",
+        "variance": "Không lệch tiêu chí cam kết"
+      },
+      {
+        "area": "Risk",
+        "planned": "5 rủi ro trong register; ưu tiên xử lý A",
+        "actual": "Rủi ro A đã Mitigate; residual theo dõi trong bảo hành",
+        "variance": "Xem mục Lessons Learned"
+      }
+    ]
+  },
+  "lessons_intro": {
+    "value": "Bài học từ Risk Register (mức A) và quá trình đóng dự án. Áp dụng cho dự án tích hợp bán lẻ tương tự.",
+    "confidence": "decision",
+    "evidence": "risk_json + Q-CO-ACT-03"
+  },
+  "lessons": [
+    {
+      "category": "System",
+      "what_happened": "Rework và trễ tiến độ phân tích/thiết kế",
+      "root_cause": "Yêu cầu nghiệp vụ chưa chốt đủ trước khi thiết kế",
+      "recommendation": "Mitigate: Chốt SRS có chữ ký; freeze change sau mốc đã thỏa thuận",
+      "priority": "High"
+    },
+    {
+      "category": "Technical",
+      "what_happened": "Trễ kiểm thử tích hợp và go-live",
+      "root_cause": "Tích hợp Main System / Selling DB phức tạp",
+      "recommendation": "Mitigate: Prototype tích hợp sớm; môi trường staging đủ dữ liệu",
+      "priority": "High"
+    },
+    {
+      "category": "Organization",
+      "what_happened": "Tiến độ dự án bị chậm",
+      "root_cause": "Thiếu kỹ sư hệ thống trong team",
+      "recommendation": "Mitigate: Tuyển / borrow SE; ưu tiên critical path",
+      "priority": "High"
+    },
+    {
+      "category": "Quality",
+      "what_happened": "Đóng dự án nhưng còn cửa sổ bảo hành 12 tháng",
+      "root_cause": "Cam kết HSDT — bảo hành sau nghiệm thu",
+      "recommendation": "Tách rõ “đóng giai dự án” vs “đóng nghĩa vụ bảo hành”; duy trì hypercare/handover OPS",
+      "priority": "Middle"
+    }
+  ],
+  "admin_closure": {
+    "summary": {
+      "value": "Đã hoàn tất UAT, go-live 01/10/2026, đào tạo và bàn giao vận hành. Hypercare 01 tháng kết thúc cùng mốc đóng 30/10/2026. Stakeholder ABC Wear chấp nhận deliverable chính (giả định dự án đã kết thúc — Q-CO-ACT-03).",
+      "confidence": "decision",
+      "evidence": "Q-CO-ACT-03"
+    },
+    "deliverables": [
+      {
+        "name": "SRS / thiết kế & Web Selling Site",
+        "accepted": "Yes",
+        "evidence": "Biên bản nghiệm thu giai phân tích–xây dựng (giả định)",
+        "date": "2026-09-25"
+      },
+      {
+        "name": "UAT",
+        "accepted": "Yes",
+        "evidence": "Biên bản UAT ký bởi key users ABC Wear (M4)",
+        "date": "2026-09-25"
+      },
+      {
+        "name": "Go-live / Cut-over PROD",
+        "accepted": "Yes",
+        "evidence": "Biên bản go-live; smoke test PROD OK",
+        "date": "2026-10-01"
+      },
+      {
+        "name": "Đào tạo end-user & tài liệu bàn giao",
+        "accepted": "Yes",
+        "evidence": "Biên bản đào tạo; bộ tài liệu handover OPS",
+        "date": "2026-09-29"
+      },
+      {
+        "name": "Đóng giai dự án / hypercare",
+        "accepted": "Yes",
+        "evidence": "Báo cáo đóng giai; không issue mở mức High",
+        "date": "2026-10-30"
+      }
+    ],
+    "open_items": [
+      {
+        "item": "Theo dõi bảo hành 12 tháng (lỗi/lỗ hổng sau nghiệm thu)",
+        "owner": "Nhà thầu Nhóm 09-20261 / PM",
+        "due": "2027-10-01",
+        "status": "Open"
+      },
+      {
+        "item": "Bàn giao đầy đủ quyền/admin OPS dài hạn",
+        "owner": "OPS ABC Wear",
+        "due": "2026-10-30",
+        "status": "Closed"
+      }
+    ]
+  },
+  "contract_closure": {
+    "summary": {
+      "value": "Gói ABC-WSS-PM_26I_09: giai thực hiện dự án đã nghiệm thu và thanh lý khối lượng theo giá 897.600.000 VNĐ. Hợp đồng chưa “đóng hết” về nghĩa vụ bảo hành — còn bảo hành 12 tháng kể từ nghiệm thu/go-live (Q-CO-ACT-04).",
+      "confidence": "decision",
+      "evidence": "Q-CO-ACT-04; HSDT"
+    },
+    "contracts": [
+      {
+        "name": "ABC-WSS-PM_26I_09 — thực hiện & nghiệm thu",
+        "status": "Closed (giai đoạn dự án)",
+        "note": "Khối lượng/giá đã chấp nhận"
+      },
+      {
+        "name": "Nghĩa vụ bảo hành 12 tháng",
+        "status": "Open",
+        "note": "Hiệu lực ~ đến 01/10/2027 (từ go-live/nghiệm thu 01/10/2026)"
+      }
+    ]
+  },
+  "archive": {
+    "summary": {
+      "value": "Lưu artifact ICTPM + hồ sơ thầu/nghiệm thu vào thư mục dự án.",
+      "confidence": "de_xuat",
+      "evidence": ""
+    },
+    "items": [
+      {
+        "item": "01_masterplan.json / draft.docx",
+        "location": "ictpm-flow/masterplan/artifacts/",
+        "distributed_to": "PM / Sponsor"
+      },
+      {
+        "item": "01_risk.json / draft.xlsx",
+        "location": "ictpm-flow/risk/artifacts/",
+        "distributed_to": "PM"
+      },
+      {
+        "item": "WBS / Master Schedule / HSDT",
+        "location": "ictpm-flow/masterplan/artifacts/inputs/",
+        "distributed_to": "PM / Archive"
+      },
+      {
+        "item": "01_closeout.json / draft.docx",
+        "location": "ictpm-flow/closeout/artifacts/",
+        "distributed_to": "PM / Sponsor"
+      }
+    ]
+  },
+  "references": {
+    "value": "Master Plan; Risk Register; WBS; HSDT; RFP (nếu dùng).",
+    "confidence": "de_xuat",
+    "evidence": "inventory"
+  },
+  "validation": {
+    "vong": 2,
+    "ket_luan": "approved — Manual Q-CO-ACT-01…04 + Q-CO-06; fill chính thức",
+    "A": [],
+    "B": [],
+    "C": []
+  }
+}
